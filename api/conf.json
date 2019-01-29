@@ -1,0 +1,8 @@
+{
+    "db": {
+        "host": "mysql:host=127.0.0.1;dbname=burger_code;charset=utf8",
+        "user": "root",
+        "password": ""
+    },
+    "salt": "=6W=dU_mE8_7Z`\\:.%}Q"
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Burger Code</title>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <h1 class="text-logo"><i class="fas fa-utensils"></i> Burger Code <i class="fas fa-utensils"></i></h1>
+        
+        <input id="show-login" type="button" class="btn btn-primary position-absolute" style="right: 5%" value="login"/>
+        <input id="logout-button" type="button" class="btn btn-danger position-absolute" style="right: 5%; display: none" value="logout"/>
+
+        <div class="container" style="z-index: 1">
+            <nav class="row mb-5">
+                <ul class="nav" id="categories-view">
+                    <!-- categories insertion -->
+                </ul>
+            </nav>
+
+            <div id="menus-view" class="row">
+                <!-- Menu inclusion -->
+            </div>
+        </div>
+
+        <div id="login-view" style="display: none"></div>
+        <div id="edit-menu-view" style="display: none"></div>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script type="application/javascript" src="js/Controller.js" crossorigin="anonymous"></script>
+        <script type="application/javascript" src="js/User.js" crossorigin="anonymous"></script>
+        <script src="js/index.js" defer></script>
+    </body>
+</html>

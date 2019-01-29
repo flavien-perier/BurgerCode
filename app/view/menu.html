@@ -1,0 +1,16 @@
+<div class="col-12 col-md-6 col-lg-4 mb-4 menu-element type-{{category}}" style="display: none;">
+    <div class="card p-1">
+        <i menu-id="{{id}}" class="fas fa-times-circle admin-element delete-menu" style="display: none;"></i>
+        <i menu-id="{{id}}" class="far fa-edit admin-element edit-menu" style="display: none;"></i>
+
+        <img class="card-img-top" src="api/assets/{{picture}}" alt="{{picture}}" />
+        <div class="card-prix">{{prix}} €</div>
+    
+        <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <p class="card-text">{{description}}</p>
+    
+            <a href="#" class="btn btn-order btn-buy"> <i class="fas fa-shopping-cart"></i> Commander</a>
+        </div>
+    </div>
+</div>
