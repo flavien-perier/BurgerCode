@@ -1,20 +1,21 @@
+DROP DATABASE IF EXISTS burger_code;
 CREATE DATABASE burger_code;
 USE burger_code;
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 );
 
-INSERT INTO `category` VALUES(1, 'Menus');
-INSERT INTO `category` VALUES(2, 'Burgers');
-INSERT INTO `category` VALUES(3, 'Snacks');
-INSERT INTO `category` VALUES(4, 'Salades');
-INSERT INTO `category` VALUES(5, 'Boissons');
-INSERT INTO `category` VALUES(6, 'Desserts');
+INSERT INTO `categorie` VALUES(1, 'Menus');
+INSERT INTO `categorie` VALUES(2, 'Burgers');
+INSERT INTO `categorie` VALUES(3, 'Snacks');
+INSERT INTO `categorie` VALUES(4, 'Salades');
+INSERT INTO `categorie` VALUES(5, 'Boissons');
+INSERT INTO `categorie` VALUES(6, 'Desserts');
 
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
@@ -23,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `description` varchar(500) DEFAULT NULL,
   `prix` float NOT NULL,
   `picture` varchar(256) NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `categorie_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `category_id` (`category_id`)
+  KEY `categorie_id` (`categorie_id`)
 );
 
 INSERT INTO `menu` VALUES(1, 'Menu Classic', 'Sandwich: Burger,  Salade, Tomate,  Cornichon + Frites + Boisson', 8.9, 'm1.png', 1);

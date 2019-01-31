@@ -8,7 +8,7 @@ class MenuRepository {
     }
 
     public function getAll() {
-        $req = $this->pdo->prepare("SELECT menu.id AS id, menu.name AS name, menu.description AS description, menu.prix AS prix, menu.picture AS picture, menu.category_id AS category_id, category.name AS category FROM menu INNER JOIN category ON category.id = menu.category_id;");
+        $req = $this->pdo->prepare("SELECT menu.id AS id, menu.name AS name, menu.description AS description, menu.prix AS prix, menu.picture AS picture, menu.categorie_id AS categorie_id, categorie.name AS categorie FROM menu INNER JOIN categorie ON categorie.id = menu.categorie_id;");
         $req->execute();
         $result = $req->fetchAll();
         $req->closeCursor();
@@ -25,7 +25,7 @@ class MenuRepository {
     }
 
     public function add($elementId) {
-        $req = $this->pdo->prepare("INSERT INTO menu(name, description, prix, picture, category_id) VALUES ('new menu', 'description', 10, 'm1.png', :elementId);");
+        $req = $this->pdo->prepare("INSERT INTO menu(name, description, prix, picture, categorie_id) VALUES ('new menu', 'description', 10, 'm1.png', :elementId);");
         $req -> bindParam(":elementId", $elementId, PDO::PARAM_INT);
         $req->execute();
         $result = $req->fetchAll();
@@ -43,14 +43,14 @@ class MenuRepository {
     }
 
     public function edit($elementId, $name, $description,
-                         $prix, $picture, $category_id) {
-        $req = $this->pdo->prepare("UPDATE menu SET name = :name, description = :description, prix = :prix, picture = :picture, category_id = :category_id WHERE id = :elementId;");
+                         $prix, $picture, $categorie_id) {
+        $req = $this->pdo->prepare("UPDATE menu SET name = :name, description = :description, prix = :prix, picture = :picture, categorie_id = :categorie_id WHERE id = :elementId;");
         $req -> bindParam(":elementId", $elementId, PDO::PARAM_INT);
         $req -> bindParam(":name", $name, PDO::PARAM_STR);
         $req -> bindParam(":description", $description, PDO::PARAM_STR);
         $req -> bindParam(":prix", $prix, PDO::PARAM_STR);
         $req -> bindParam(":picture", $picture, PDO::PARAM_STR);
-        $req -> bindParam(":category_id", $category_id, PDO::PARAM_INT);
+        $req -> bindParam(":categorie_id", $categorie_id, PDO::PARAM_INT);
         $req->execute();
         $result = $req->fetchAll();
         $req->closeCursor();

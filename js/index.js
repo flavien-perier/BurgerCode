@@ -5,11 +5,11 @@ function loadController(name) {
 }
 
 let user = new User();
-let selectedCategory = 1;
+let selectedCategorie = 1;
 
 // controller initialisation
 const menu = loadController("menu");
-const category = loadController("category");
+const categorie = loadController("categorie");
 const login = new Controller(`login`, `login-view`, `app/view/login.html`);
 const addMenu = new Controller(`addMenu`, `menus-view`, `app/view/addMenu.html`);
 const editMenu = new Controller(`editMenu`, `edit-menu-view`, `app/view/editMenu.html`)
@@ -45,12 +45,12 @@ function loadMenus() {
     });
 }
 
-function loadCategory() {
+function loadCategorie() {
     return new Promise((resolve, reject) => {
-        category.load().then(() => {
+        categorie.load().then(() => {
             $(".tab-entity").click(function() {
                 const className = $(this).first().text();
-                selectedCategory = $(this).attr("categ-id");
+                selectedCategorie = $(this).attr("categ-id");
     
                 $(".menu-element").css("display", "none");
                 $(".tab-entity-active").removeClass("tab-entity-active");
@@ -113,7 +113,7 @@ function loadAddMenu() {
         addMenu.load().then(() => {
             $("#add-new-menu").click(() => {
                 $.ajax({
-                    url: `api/menu/${selectedCategory}`,
+                    url: `api/menu/${selectedCategorie}`,
                     method: "POST",
                     beforeSend: (xhr) => {
                         xhr.setRequestHeader("username", user.username);
@@ -150,7 +150,7 @@ function loadEditMenu(idMenu) {
                     description: response.responseJSON.description,
                     prix: response.responseJSON.prix,
                     picture: response.responseJSON.picture,
-                    category_id: response.responseJSON.category_id
+                    categorie_id: response.responseJSON.categorie_id
                 }];
         
                 $("#edit-menu-view").show();
@@ -163,7 +163,7 @@ function loadEditMenu(idMenu) {
 
                     $.get("api/categories", (responseCateg) => {
                         responseCateg.categories.forEach((categ) => {
-                            $("#category-id-menu-form").append(`<option value="${categ.id}" ${categ.id == response.responseJSON.category_id ? "selected" : ""}>${categ.name}</option>`);
+                            $("#categorie-id-menu-form").append(`<option value="${categ.id}" ${categ.id == response.responseJSON.categorie_id ? "selected" : ""}>${categ.name}</option>`);
                         });
                     });
 
@@ -196,7 +196,7 @@ function loadEditMenu(idMenu) {
                                 description: $("#description-menu-form").val(),
                                 prix: $("#prix-menu-form").val(),
                                 picture: $("#picture-menu-form").attr("filename"),
-                                category_id: $("#category-id-menu-form").val()
+                                categorie_id: $("#categorie-id-menu-form").val()
                             }),
                             contentType: "application/json; charset=utf-8",
                             dataType   : "json",
@@ -234,7 +234,7 @@ function logoutAction() {
 }
 
 $(function() {
-    loadCategory().then(() => {
+    loadCategorie().then(() => {
         loadLogin().then(() => {
             if (user.isSet()) {
                 loginAction();

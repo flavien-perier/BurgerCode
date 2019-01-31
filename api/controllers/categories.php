@@ -1,13 +1,13 @@
 <?php
-require_once("./repositories/CategoryRepository.php");
+require_once("./repositories/CategorieRepository.php");
 
 function controller() {
     switch ($_SERVER["REQUEST_METHOD"]) {
         case "GET":
-            $categoryRepository = new CategoryRepository();
+            $categorieRepository = new CategorieRepository();
         
             return array(
-                "categories" => $categoryRepository->getAll()
+                "categories" => $categorieRepository->getAll()
             );
         default:
             throw new NotFoundException();

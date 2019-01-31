@@ -42,7 +42,7 @@ function controller() {
                 !isset($body->description) || 
                 !isset($body->prix) || 
                 !isset($body->picture) || 
-                !isset($body->category_id)) {
+                !isset($body->categorie_id)) {
                     throw new BadRequestException("malformed body");
                 }
 
@@ -56,7 +56,7 @@ function controller() {
                 $body->description,
                 $body->prix,
                 $body->picture,
-                $body->category_id
+                $body->categorie_id
             );
             return null;
         default:

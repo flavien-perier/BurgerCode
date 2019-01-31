@@ -1,6 +1,6 @@
 <?php
 require_once("./conf/pdo.php");
-class CategoryRepository {
+class CategorieRepository {
     private $pdo;
 
     function __construct() {
@@ -8,7 +8,7 @@ class CategoryRepository {
     }
 
     public function getAll() {
-        $req = $this->pdo->prepare("SELECT id, name FROM category");
+        $req = $this->pdo->prepare("SELECT id, name FROM categorie");
         $req->execute();
         $result = $req->fetchAll();
         $req->closeCursor();
